@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -17,7 +15,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class IgnoreTokenBindingHandler implements TokenBindingHandler
 {
-    public function check(TokenBinding $tokenBinding, ServerRequestInterface $request): void
+    public function check(TokenBinding $tokenBinding, ServerRequestInterface $request)
     {
         //Does nothing
     }

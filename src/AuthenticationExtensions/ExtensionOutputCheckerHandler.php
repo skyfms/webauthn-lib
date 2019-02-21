@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -20,7 +18,7 @@ class ExtensionOutputCheckerHandler
      */
     private $checkers = [];
 
-    public function add(ExtensionOutputChecker $checker): void
+    public function add(ExtensionOutputChecker $checker)
     {
         $this->checkers[] = $checker;
     }
@@ -28,7 +26,7 @@ class ExtensionOutputCheckerHandler
     /**
      * @throws ExtensionOutputError
      */
-    public function check(AuthenticationExtensionsClientOutputs $extensions): void
+    public function check(AuthenticationExtensionsClientOutputs $extensions)
     {
         foreach ($this->checkers as $checker) {
             $checker->check($extensions);

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -55,7 +53,7 @@ class AuthenticatorAssertionResponseValidator
     /**
      * @see https://www.w3.org/TR/webauthn/#verifying-assertion
      */
-    public function check(string $credentialId, AuthenticatorAssertionResponse $authenticatorAssertionResponse, PublicKeyCredentialRequestOptions $publicKeyCredentialRequestOptions, ServerRequestInterface $request, ?string $userHandle): void
+    public function check($credentialId, AuthenticatorAssertionResponse $authenticatorAssertionResponse, PublicKeyCredentialRequestOptions $publicKeyCredentialRequestOptions, ServerRequestInterface $request, $userHandle)
     {
         /* @see 7.2.1 */
         if (0 !== \count($publicKeyCredentialRequestOptions->getAllowCredentials())) {
@@ -152,7 +150,7 @@ class AuthenticatorAssertionResponseValidator
         /* @see 7.2.18 */
     }
 
-    private function getPublicKeyAsPem(string $key): string
+    private function getPublicKeyAsPem($key)
     {
         $der = "\x30\x59\x30\x13\x06\x07\x2a\x86\x48\xce\x3d\x02\x01";
         $der .= "\x06\x08\x2a\x86\x48\xce\x3d\x03\x01\x07\x03\x42";
@@ -165,7 +163,7 @@ class AuthenticatorAssertionResponseValidator
         return $pem;
     }
 
-    private function isCredentialIdAllowed(string $credentialId, array $allowedCredentials): bool
+    private function isCredentialIdAllowed($credentialId, array $allowedCredentials)
     {
         foreach ($allowedCredentials as $allowedCredential) {
             if (hash_equals($allowedCredential->getId(), $credentialId)) {
@@ -176,7 +174,7 @@ class AuthenticatorAssertionResponseValidator
         return false;
     }
 
-    private function has(string $credentialId): bool
+    private function has($credentialId)
     {
         if ($this->credentialRepository instanceof PublicKeyCredentialSourceRepository) {
             return null !== $this->credentialRepository->findOneByCredentialId($credentialId);
@@ -185,7 +183,7 @@ class AuthenticatorAssertionResponseValidator
         return $this->credentialRepository->has($credentialId);
     }
 
-    private function get(string $credentialId): AttestedCredentialData
+    private function get($credentialId): AttestedCredentialData
     {
         if ($this->credentialRepository instanceof PublicKeyCredentialSourceRepository) {
             $credentialSource = $this->credentialRepository->findOneByCredentialId($credentialId);
@@ -197,7 +195,7 @@ class AuthenticatorAssertionResponseValidator
         return $this->credentialRepository->get($credentialId);
     }
 
-    private function getUserHandleFor(string $credentialId): string
+    private function getUserHandleFor($credentialId)
     {
         if ($this->credentialRepository instanceof PublicKeyCredentialSourceRepository) {
             $credentialSource = $this->credentialRepository->findOneByCredentialId($credentialId);
@@ -209,7 +207,7 @@ class AuthenticatorAssertionResponseValidator
         return $this->credentialRepository->getUserHandleFor($credentialId);
     }
 
-    private function getCounterFor(string $credentialId): int
+    private function getCounterFor($credentialId)
     {
         if ($this->credentialRepository instanceof PublicKeyCredentialSourceRepository) {
             $credentialSource = $this->credentialRepository->findOneByCredentialId($credentialId);
@@ -221,7 +219,7 @@ class AuthenticatorAssertionResponseValidator
         return $this->credentialRepository->getCounterFor($credentialId);
     }
 
-    public function updateCounterFor(string $credentialId, int $newCounter): void
+    public function updateCounterFor($credentialId, $newCounter)
     {
         if ($this->credentialRepository instanceof PublicKeyCredentialSourceRepository) {
             $credentialSource = $this->credentialRepository->findOneByCredentialId($credentialId);
@@ -235,7 +233,7 @@ class AuthenticatorAssertionResponseValidator
         $this->credentialRepository->updateCounterFor($credentialId, $newCounter);
     }
 
-    private function getFacetId(string $rpId, AuthenticationExtensionsClientInputs $authenticationExtensionsClientInputs, ?AuthenticationExtensionsClientOutputs $authenticationExtensionsClientOutputs): string
+    private function getFacetId($rpId, AuthenticationExtensionsClientInputs $authenticationExtensionsClientInputs, $authenticationExtensionsClientOutputs)
     {
         switch (true) {
             case !$authenticationExtensionsClientInputs->has('appid'):
@@ -251,3 +249,4 @@ class AuthenticatorAssertionResponseValidator
         }
     }
 }
+

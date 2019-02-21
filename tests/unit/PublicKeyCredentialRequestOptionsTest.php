@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -30,7 +28,7 @@ class PublicKeyCredentialRequestOptionsTest extends TestCase
     /**
      * @test
      */
-    public function anPublicKeyCredentialRequestOptionsCanBeCreatedAndValueAccessed(): void
+    public function anPublicKeyCredentialRequestOptionsCanBeCreatedAndValueAccessed()
     {
         $extensions = new AuthenticationExtensionsClientInputs();
         $extensions->add(new AuthenticationExtension('foo', 'bar'));

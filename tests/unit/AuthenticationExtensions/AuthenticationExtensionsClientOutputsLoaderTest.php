@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -33,7 +31,7 @@ class AuthenticationExtensionsClientOutputsLoaderTest extends TestCase
     /**
      * @test
      */
-    public function theExtensionsCanBeLoaded(): void
+    public function theExtensionsCanBeLoaded()
     {
         $cbor = new MapObject([
             new MapItem(new ByteStringObject('loc'), new TrueObject()),
@@ -51,7 +49,7 @@ class AuthenticationExtensionsClientOutputsLoaderTest extends TestCase
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage Invalid extension object
      */
-    public function theCBORObjectIsInvalid(): void
+    public function theCBORObjectIsInvalid()
     {
         $cbor = new ByteStringObject('loc');
 
@@ -63,7 +61,7 @@ class AuthenticationExtensionsClientOutputsLoaderTest extends TestCase
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage Invalid extension key
      */
-    public function theMapKeyIsNotAString(): void
+    public function theMapKeyIsNotAString()
     {
         $cbor = new MapObject([
             new MapItem(SignedIntegerObject::createFromGmpValue(gmp_init(-100)), new TrueObject()),

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -33,7 +31,7 @@ final class FidoU2FAttestationStatementSupport implements AttestationStatementSu
         $this->decoder = $decoder;
     }
 
-    public function name(): string
+    public function name()
     {
         return 'fido-u2f';
     }
@@ -56,7 +54,7 @@ final class FidoU2FAttestationStatementSupport implements AttestationStatementSu
         return AttestationStatement::createBasic($attestation['fmt'], $attestation['attStmt'], new CertificateTrustPath($certificates));
     }
 
-    public function isValid(string $clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData): bool
+    public function isValid($clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData)
     {
         $trustPath = $attestationStatement->getTrustPath();
         Assertion::isInstanceOf($trustPath, CertificateTrustPath::class, 'Invalid trust path');
@@ -69,7 +67,7 @@ final class FidoU2FAttestationStatementSupport implements AttestationStatementSu
         return 1 === openssl_verify($dataToVerify, $attestationStatement->get('sig'), $trustPath->getCertificates()[0], OPENSSL_ALGO_SHA256);
     }
 
-    private function extractPublicKey(?string $publicKey): string
+    private function extractPublicKey($publicKey)
     {
         Assertion::notNull($publicKey, 'The attested credential data does not contain a valid public key.');
 
@@ -83,11 +81,11 @@ final class FidoU2FAttestationStatementSupport implements AttestationStatementSu
         return "\x04".$publicKey[-2].$publicKey[-3];
     }
 
-    private function checkCertificate(string $publicKey): void
+    private function checkCertificate($publicKey)
     {
         try {
             $resource = \Safe\openssl_pkey_get_public($publicKey);
-        } catch (\Throwable $throwable) {
+        } catch (\Exception $throwable) {
             throw new \InvalidArgumentException('The certificate in the attestation statement is not valid.', 0, $throwable);
         }
         $details = openssl_pkey_get_details($resource);
@@ -98,3 +96,4 @@ final class FidoU2FAttestationStatementSupport implements AttestationStatementSu
         Assertion::eq($details['ec']['curve_oid'], '1.2.840.10045.3.1.7', 'The certificate in the attestation statement is not valid.');
     }
 }
+

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -18,9 +16,9 @@ use Base64Url\Base64Url;
 
 class TokenBinding
 {
-    public const TOKEN_BINDING_STATUS_PRESENT = 'present';
-    public const TOKEN_BINDING_STATUS_SUPPORTED = 'supported';
-    public const TOKEN_BINDING_STATUS_NOT_SUPPORTED = 'not-supported';
+    const TOKEN_BINDING_STATUS_PRESENT = 'present';
+    const TOKEN_BINDING_STATUS_SUPPORTED = 'supported';
+    const TOKEN_BINDING_STATUS_NOT_SUPPORTED = 'not-supported';
 
     /**
      * @var string
@@ -32,7 +30,7 @@ class TokenBinding
      */
     private $id;
 
-    public function __construct(string $status, ?string $id)
+    public function __construct($status, $id)
     {
         Assertion::false(self::TOKEN_BINDING_STATUS_PRESENT === $status && null === $id, 'The member "id" is required when status is "present"');
         $this->status = $status;
@@ -48,12 +46,12 @@ class TokenBinding
         return new self($status, $id);
     }
 
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->status;
     }
 
-    public function getId(): ?string
+    public function getId()
     {
         return $this->id;
     }

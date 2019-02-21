@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -27,7 +25,7 @@ class PublicKeyCredentialDescriptorTest extends TestCase
     /**
      * @test
      */
-    public function anPublicKeyCredentialDescriptorCanBeCreatedAndValueAccessed(): void
+    public function anPublicKeyCredentialDescriptorCanBeCreatedAndValueAccessed()
     {
         $descriptor = new PublicKeyCredentialDescriptor('type', 'id', ['transport']);
 

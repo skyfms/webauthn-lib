@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -20,17 +18,17 @@ class PublicKeyCredentialDescriptorCollection implements \JsonSerializable, \Cou
      */
     private $publicKeyCredentialDescriptors = [];
 
-    public function add(PublicKeyCredentialDescriptor $publicKeyCredentialDescriptor): void
+    public function add(PublicKeyCredentialDescriptor $publicKeyCredentialDescriptor)
     {
         $this->publicKeyCredentialDescriptors[$publicKeyCredentialDescriptor->getId()] = $publicKeyCredentialDescriptor;
     }
 
-    public function has(string $id): bool
+    public function has($id)
     {
         return \array_key_exists($id, $this->publicKeyCredentialDescriptors);
     }
 
-    public function remove(string $id): void
+    public function remove($id)
     {
         if (!$this->has($id)) {
             return;
@@ -44,7 +42,7 @@ class PublicKeyCredentialDescriptorCollection implements \JsonSerializable, \Cou
         return new \ArrayIterator($this->publicKeyCredentialDescriptors);
     }
 
-    public function count(int $mode = COUNT_NORMAL): int
+    public function count($mode = COUNT_NORMAL)
     {
         return \count($this->publicKeyCredentialDescriptors, $mode);
     }

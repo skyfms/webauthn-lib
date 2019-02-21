@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -32,7 +30,7 @@ class AndroidKeyAttestationStatementSupportTest extends TestCase
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The attestation statement value "sig" is missing.
      */
-    public function theAttestationStatementDoesNotContainTheRequiredSignature(): void
+    public function theAttestationStatementDoesNotContainTheRequiredSignature()
     {
         $support = new AndroidKeyAttestationStatementSupport($this->getDecoder());
 
@@ -48,7 +46,7 @@ class AndroidKeyAttestationStatementSupportTest extends TestCase
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The attestation statement value "x5c" is missing.
      */
-    public function theAttestationStatementDoesNotContainTheRequiredCertificateList(): void
+    public function theAttestationStatementDoesNotContainTheRequiredCertificateList()
     {
         $support = new AndroidKeyAttestationStatementSupport($this->getDecoder());
         static::assertFalse($support->load([
@@ -64,7 +62,7 @@ class AndroidKeyAttestationStatementSupportTest extends TestCase
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The attestation statement value "alg" is missing.
      */
-    public function theAttestationStatementDoesNotContainTheRequiredAlgorithmParameter(): void
+    public function theAttestationStatementDoesNotContainTheRequiredAlgorithmParameter()
     {
         $support = new AndroidKeyAttestationStatementSupport($this->getDecoder());
         static::assertFalse($support->load([
@@ -81,7 +79,7 @@ class AndroidKeyAttestationStatementSupportTest extends TestCase
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The attestation statement value "x5c" must be a list with at least one certificate.
      */
-    public function theAttestationStatementContainsAnEmptyCertificateList(): void
+    public function theAttestationStatementContainsAnEmptyCertificateList()
     {
         $support = new AndroidKeyAttestationStatementSupport($this->getDecoder());
 

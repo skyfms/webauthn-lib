@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -25,18 +23,18 @@ abstract class PublicKeyCredentialEntity implements \JsonSerializable
      */
     private $icon;
 
-    public function __construct(string $name, ?string $icon)
+    public function __construct($name, $icon)
     {
         $this->name = $name;
         $this->icon = $icon;
     }
 
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
 
-    public function getIcon(): ?string
+    public function getIcon()
     {
         return $this->icon;
     }

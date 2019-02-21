@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -17,7 +15,7 @@ use Assert\Assertion;
 
 class CertificateToolbox
 {
-    public static function checkChain(array $x5c): void
+    public static function checkChain(array $x5c)
     {
         Assertion::notEmpty($x5c, 'The attestation statement value "x5c" must be a list with at least one certificate.');
         reset($x5c);
@@ -42,7 +40,7 @@ class CertificateToolbox
         }
     }
 
-    public static function convertDERToPEM(string $certificate): string
+    public static function convertDERToPEM($certificate)
     {
         $derCertificate = self::unusedBytesFix($certificate);
         $pemCert = '-----BEGIN CERTIFICATE-----'.PHP_EOL;
@@ -62,7 +60,7 @@ class CertificateToolbox
         return $certs;
     }
 
-    private static function unusedBytesFix(string $certificate): string
+    private static function unusedBytesFix($certificate)
     {
         $certificateHash = hash('sha256', $certificate);
         if (\in_array($certificateHash, self::getCertificateHashes(), true)) {

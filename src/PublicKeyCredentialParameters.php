@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -20,12 +18,12 @@ class PublicKeyCredentialParameters implements \JsonSerializable
     /**
      * @deprecated Will be removed in v2.0. Use \Cose\Algorithms::COSE_ALGORITHM_ES256 instead
      */
-    public const ALGORITHM_ES256 = -7;
+    const ALGORITHM_ES256 = -7;
 
     /**
      * @deprecated Will be removed in v2.0. Use \Cose\Algorithms::COSE_ALGORITHM_RS256 instead
      */
-    public const ALGORITHM_RS256 = -257;
+    const ALGORITHM_RS256 = -257;
 
     /**
      * @var string
@@ -37,18 +35,18 @@ class PublicKeyCredentialParameters implements \JsonSerializable
      */
     private $alg;
 
-    public function __construct(string $type, int $alg)
+    public function __construct($type, $alg)
     {
         $this->type = $type;
         $this->alg = $alg;
     }
 
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }
 
-    public function getAlg(): int
+    public function getAlg()
     {
         return $this->alg;
     }

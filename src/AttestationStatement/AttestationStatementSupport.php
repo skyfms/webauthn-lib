@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -17,9 +15,9 @@ use Webauthn\AuthenticatorData;
 
 interface AttestationStatementSupport
 {
-    public function name(): string;
+    public function name();
 
     public function load(array $attestation): AttestationStatement;
 
-    public function isValid(string $clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData): bool;
+    public function isValid($clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData);
 }

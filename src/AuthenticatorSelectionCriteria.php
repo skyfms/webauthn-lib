@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -15,13 +13,13 @@ namespace Webauthn;
 
 class AuthenticatorSelectionCriteria implements \JsonSerializable
 {
-    public const AUTHENTICATOR_ATTACHMENT_NO_PREFERENCE = null;
-    public const AUTHENTICATOR_ATTACHMENT_PLATFORM = 'platform';
-    public const AUTHENTICATOR_ATTACHMENT_CROSS_PLATFORM = 'cross-platform';
+    const AUTHENTICATOR_ATTACHMENT_NO_PREFERENCE = null;
+    const AUTHENTICATOR_ATTACHMENT_PLATFORM = 'platform';
+    const AUTHENTICATOR_ATTACHMENT_CROSS_PLATFORM = 'cross-platform';
 
-    public const USER_VERIFICATION_REQUIREMENT_REQUIRED = 'required';
-    public const USER_VERIFICATION_REQUIREMENT_PREFERRED = 'preferred';
-    public const USER_VERIFICATION_REQUIREMENT_DISCOURAGED = 'discouraged';
+    const USER_VERIFICATION_REQUIREMENT_REQUIRED = 'required';
+    const USER_VERIFICATION_REQUIREMENT_PREFERRED = 'preferred';
+    const USER_VERIFICATION_REQUIREMENT_DISCOURAGED = 'discouraged';
 
     /**
      * @var string|null
@@ -38,24 +36,24 @@ class AuthenticatorSelectionCriteria implements \JsonSerializable
      */
     private $userVerification;
 
-    public function __construct(?string $authenticatorAttachment = null, bool $requireResidentKey = false, string $userVerification = self::USER_VERIFICATION_REQUIREMENT_PREFERRED)
+    public function __construct($authenticatorAttachment = null, $requireResidentKey = false, $userVerification = self::USER_VERIFICATION_REQUIREMENT_PREFERRED)
     {
         $this->authenticatorAttachment = $authenticatorAttachment;
         $this->requireResidentKey = $requireResidentKey;
         $this->userVerification = $userVerification;
     }
 
-    public function getAuthenticatorAttachment(): ?string
+    public function getAuthenticatorAttachment()
     {
         return $this->authenticatorAttachment;
     }
 
-    public function isRequireResidentKey(): bool
+    public function isRequireResidentKey()
     {
         return $this->requireResidentKey;
     }
 
-    public function getUserVerification(): string
+    public function getUserVerification()
     {
         return $this->userVerification;
     }

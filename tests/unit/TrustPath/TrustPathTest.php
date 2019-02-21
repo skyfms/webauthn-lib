@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -28,7 +26,7 @@ class TrustPathTest extends TestCase
      *
      * @use \Webauthn\TrustPath\TrustPath\CertificateTrustPath
      */
-    public function aCertificateTrustPathCanBeCreated(): void
+    public function aCertificateTrustPathCanBeCreated()
     {
         $tp = new CertificateTrustPath(['cert#1']);
 
@@ -40,7 +38,7 @@ class TrustPathTest extends TestCase
      *
      * @use \Webauthn\TrustPath\TrustPath\EcdaaKeyIdTrustPath
      */
-    public function anEcdaaKeyIdTrustPathCanBeCreated(): void
+    public function anEcdaaKeyIdTrustPathCanBeCreated()
     {
         $tp = new EcdaaKeyIdTrustPath('id');
 

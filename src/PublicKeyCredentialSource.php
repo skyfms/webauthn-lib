@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -65,7 +63,7 @@ class PublicKeyCredentialSource
      */
     private $counter;
 
-    public function __construct(string $publicKeyCredentialId, string $type, array $transports, string $attestationType, TrustPath $trustPath, string $aaguid, string $credentialPublicKey, string $userHandle, int $counter)
+    public function __construct($publicKeyCredentialId, $type, array $transports, $attestationType, TrustPath $trustPath, $aaguid, $credentialPublicKey, $userHandle, $counter)
     {
         $this->publicKeyCredentialId = $publicKeyCredentialId;
         $this->type = $type;
@@ -78,7 +76,7 @@ class PublicKeyCredentialSource
         $this->trustPath = $trustPath;
     }
 
-    public function getPublicKeyCredentialId(): string
+    public function getPublicKeyCredentialId()
     {
         return $this->publicKeyCredentialId;
     }
@@ -92,7 +90,7 @@ class PublicKeyCredentialSource
         );
     }
 
-    public function getAttestationType(): string
+    public function getAttestationType()
     {
         return $this->attestationType;
     }
@@ -111,7 +109,7 @@ class PublicKeyCredentialSource
         );
     }
 
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }
@@ -124,27 +122,27 @@ class PublicKeyCredentialSource
         return $this->transports;
     }
 
-    public function getAaguid(): string
+    public function getAaguid()
     {
         return $this->aaguid;
     }
 
-    public function getCredentialPublicKey(): string
+    public function getCredentialPublicKey()
     {
         return $this->credentialPublicKey;
     }
 
-    public function getUserHandle(): string
+    public function getUserHandle()
     {
         return $this->userHandle;
     }
 
-    public function getCounter(): int
+    public function getCounter()
     {
         return $this->counter;
     }
 
-    public function setCounter(int $counter): void
+    public function setCounter($counter)
     {
         $this->counter = $counter;
     }

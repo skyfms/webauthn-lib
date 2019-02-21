@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -27,7 +25,7 @@ class AttestedCredentialDataTest extends TestCase
     /**
      * @test
      */
-    public function anAttestedCredentialDataCanBeCreatedAndValueAccessed(): void
+    public function anAttestedCredentialDataCanBeCreatedAndValueAccessed()
     {
         $attestedCredentialData = new AttestedCredentialData('aauid', 'credential_id', 'credential_public_key');
 

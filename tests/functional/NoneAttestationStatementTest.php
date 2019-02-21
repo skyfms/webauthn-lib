@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -34,7 +32,7 @@ class NoneAttestationStatementTest extends AbstractTestCase
     /**
      * @test
      */
-    public function aNoneAttestationCanBeVerified(): void
+    public function aNoneAttestationCanBeVerified()
     {
         $publicKeyCredentialCreationOptions = new PublicKeyCredentialCreationOptions(
             new PublicKeyCredentialRpEntity('My Application'),

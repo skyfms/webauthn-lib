@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -15,12 +13,12 @@ namespace Webauthn;
 
 interface PublicKeyCredentialSourceRepository extends CredentialRepository
 {
-    public function findOneByCredentialId(string $publicKeyCredentialId): ?PublicKeyCredentialSource;
+    public function findOneByCredentialId($publicKeyCredentialId): PublicKeyCredentialSource;
 
     /**
      * @return PublicKeyCredentialSource[]
      */
     public function findAllForUserEntity(PublicKeyCredentialUserEntity $publicKeyCredentialUserEntity): array;
 
-    public function saveCredentialSource(PublicKeyCredentialSource $publicKeyCredentialSource): void;
+    public function saveCredentialSource(PublicKeyCredentialSource $publicKeyCredentialSource);
 }

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -34,7 +32,7 @@ class Fido2AttestationStatementTest extends AbstractTestCase
     /**
      * @test
      */
-    public function aFidoU2FAttestationCanBeVerified(): void
+    public function aFidoU2FAttestationCanBeVerified()
     {
         $publicKeyCredentialCreationOptions = new PublicKeyCredentialCreationOptions(
             new PublicKeyCredentialRpEntity('My Application'),

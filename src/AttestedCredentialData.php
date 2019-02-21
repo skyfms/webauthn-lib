@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -35,24 +33,24 @@ class AttestedCredentialData implements \JsonSerializable
      */
     private $credentialPublicKey;
 
-    public function __construct(string $aaguid, string $credentialId, ?string $credentialPublicKey)
+    public function __construct($aaguid, $credentialId, $credentialPublicKey)
     {
         $this->aaguid = $aaguid;
         $this->credentialId = $credentialId;
         $this->credentialPublicKey = $credentialPublicKey;
     }
 
-    public function getAaguid(): string
+    public function getAaguid()
     {
         return $this->aaguid;
     }
 
-    public function getCredentialId(): string
+    public function getCredentialId()
     {
         return $this->credentialId;
     }
 
-    public function getCredentialPublicKey(): ?string
+    public function getCredentialPublicKey()
     {
         return $this->credentialPublicKey;
     }

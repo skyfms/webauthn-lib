@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -29,7 +27,7 @@ class AuthenticatorDataTest extends TestCase
     /**
      * @test
      */
-    public function anAuthenticatorDataCanBeCreatedAndValueAccessed(): void
+    public function anAuthenticatorDataCanBeCreatedAndValueAccessed()
     {
         $attestedCredentialData = $this->prophesize(AttestedCredentialData::class);
         $extensions = $this->prophesize(AuthenticationExtensionsClientOutputs::class);

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -29,7 +27,7 @@ class AuthenticatorAttestationResponseTest extends TestCase
     /**
      * @test
      */
-    public function anAuthenticatorAttestationResponseCanBeCreatedAndValueAccessed(): void
+    public function anAuthenticatorAttestationResponseCanBeCreatedAndValueAccessed()
     {
         $clientDataJSON = $this->prophesize(CollectedClientData::class);
         $attestationObject = $this->prophesize(AttestationObject::class);

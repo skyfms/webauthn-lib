@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -30,14 +28,14 @@ class AttestationObject
      */
     private $authData;
 
-    public function __construct(string $rawAttestationObject, AttestationStatement $attStmt, AuthenticatorData $authData)
+    public function __construct($rawAttestationObject, AttestationStatement $attStmt, AuthenticatorData $authData)
     {
         $this->rawAttestationObject = $rawAttestationObject;
         $this->attStmt = $attStmt;
         $this->authData = $authData;
     }
 
-    public function getRawAttestationObject(): string
+    public function getRawAttestationObject()
     {
         return $this->rawAttestationObject;
     }

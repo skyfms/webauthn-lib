@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -30,7 +28,7 @@ class AttestationStatementTest extends TestCase
     /**
      * @test
      */
-    public function anAttestationStatementOfNoneTypeReturnsTheExpectedProperties(): void
+    public function anAttestationStatementOfNoneTypeReturnsTheExpectedProperties()
     {
         $attestationStatement = AttestationStatement::createNone('fmt', ['bar' => 'FOO'], new EmptyTrustPath());
         static::assertEquals('fmt', $attestationStatement->getFmt());
@@ -45,7 +43,7 @@ class AttestationStatementTest extends TestCase
     /**
      * @test
      */
-    public function anAttestationStatementOfEcdaaTypeReturnsTheExpectedProperties(): void
+    public function anAttestationStatementOfEcdaaTypeReturnsTheExpectedProperties()
     {
         $attestationStatement = AttestationStatement::createEcdaa('fmt', ['bar' => 'FOO'], new EcdaaKeyIdTrustPath('key_id'));
         static::assertEquals('fmt', $attestationStatement->getFmt());
@@ -60,7 +58,7 @@ class AttestationStatementTest extends TestCase
     /**
      * @test
      */
-    public function anAttestationStatementOfBasicTypeReturnsTheExpectedProperties(): void
+    public function anAttestationStatementOfBasicTypeReturnsTheExpectedProperties()
     {
         $attestationStatement = AttestationStatement::createBasic('fmt', ['bar' => 'FOO'], new CertificateTrustPath(['key_id']));
         static::assertEquals('fmt', $attestationStatement->getFmt());
@@ -75,7 +73,7 @@ class AttestationStatementTest extends TestCase
     /**
      * @test
      */
-    public function anAttestationStatementOfAttCATypeReturnsTheExpectedProperties(): void
+    public function anAttestationStatementOfAttCATypeReturnsTheExpectedProperties()
     {
         $attestationStatement = AttestationStatement::createAttCA('fmt', ['bar' => 'FOO'], new CertificateTrustPath(['key_id']));
         static::assertEquals('fmt', $attestationStatement->getFmt());
@@ -90,7 +88,7 @@ class AttestationStatementTest extends TestCase
     /**
      * @test
      */
-    public function anAttestationStatementOfSelfTypeReturnsTheExpectedProperties(): void
+    public function anAttestationStatementOfSelfTypeReturnsTheExpectedProperties()
     {
         $attestationStatement = AttestationStatement::createSelf('fmt', ['bar' => 'FOO'], new CertificateTrustPath([]));
         static::assertEquals('fmt', $attestationStatement->getFmt());

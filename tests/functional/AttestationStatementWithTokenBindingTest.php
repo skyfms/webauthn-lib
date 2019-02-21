@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -38,7 +36,7 @@ class AttestationStatementWithTokenBindingTest extends AbstractTestCase
     /**
      * @test
      */
-    public function anAttestationWithTokenBindingCanBeVerified(): void
+    public function anAttestationWithTokenBindingCanBeVerified()
     {
         $publicKeyCredentialCreationOptions = new PublicKeyCredentialCreationOptions(
             new PublicKeyCredentialRpEntity('My Application'),

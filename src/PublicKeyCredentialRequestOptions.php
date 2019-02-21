@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -18,9 +16,9 @@ use Webauthn\AuthenticationExtensions\AuthenticationExtensionsClientInputs;
 
 class PublicKeyCredentialRequestOptions implements \JsonSerializable
 {
-    public const USER_VERIFICATION_REQUIREMENT_REQUIRED = 'required';
-    public const USER_VERIFICATION_REQUIREMENT_PREFERRED = 'preferred';
-    public const USER_VERIFICATION_REQUIREMENT_DISCOURAGED = 'discouraged';
+    const USER_VERIFICATION_REQUIREMENT_REQUIRED = 'required';
+    const USER_VERIFICATION_REQUIREMENT_PREFERRED = 'preferred';
+    const USER_VERIFICATION_REQUIREMENT_DISCOURAGED = 'discouraged';
 
     /**
      * @var string
@@ -55,7 +53,7 @@ class PublicKeyCredentialRequestOptions implements \JsonSerializable
     /**
      * @param PublicKeyCredentialDescriptor[] $allowCredentials
      */
-    public function __construct(string $challenge, ?int $timeout = null, ?string $rpId = null, array $allowCredentials = [], ?string $userVerification = null, ?AuthenticationExtensionsClientInputs $extensions = null)
+    public function __construct($challenge, $timeout = null, $rpId = null, array $allowCredentials = [], $userVerification = null, $extensions = null)
     {
         $this->challenge = $challenge;
         $this->timeout = $timeout;
@@ -65,17 +63,17 @@ class PublicKeyCredentialRequestOptions implements \JsonSerializable
         $this->extensions = $extensions ?? new AuthenticationExtensionsClientInputs();
     }
 
-    public function getChallenge(): string
+    public function getChallenge()
     {
         return $this->challenge;
     }
 
-    public function getTimeout(): ?int
+    public function getTimeout()
     {
         return $this->timeout;
     }
 
-    public function getRpId(): ?string
+    public function getRpId()
     {
         return $this->rpId;
     }
@@ -88,7 +86,7 @@ class PublicKeyCredentialRequestOptions implements \JsonSerializable
         return $this->allowCredentials;
     }
 
-    public function getUserVerification(): ?string
+    public function getUserVerification()
     {
         return $this->userVerification;
     }

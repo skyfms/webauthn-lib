@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -48,7 +46,7 @@ final class AndroidSafetyNetAttestationStatementSupport implements AttestationSt
      */
     private $jwsSerializer;
 
-    public function __construct(HttpClient $client, string $apiKey)
+    public function __construct(HttpClient $client, $apiKey)
     {
         $this->jwsSerializer = new CompactSerializer(
             new StandardConverter()
@@ -58,7 +56,7 @@ final class AndroidSafetyNetAttestationStatementSupport implements AttestationSt
         $this->client = $client;
     }
 
-    public function name(): string
+    public function name()
     {
         return 'android-safetynet';
     }
@@ -89,7 +87,7 @@ final class AndroidSafetyNetAttestationStatementSupport implements AttestationSt
         );
     }
 
-    public function isValid(string $clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData): bool
+    public function isValid($clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData)
     {
         try {
             /** @var JWS $jws */
@@ -120,14 +118,12 @@ final class AndroidSafetyNetAttestationStatementSupport implements AttestationSt
             Assertion::boolean($responseBodyJson['isValidSignature'], 'Invalid response.');
 
             return $responseBodyJson['isValidSignature'];
-        } catch (\Throwable $throwable) {
-            return false;
         } catch (Exception $throwable) {
             return false;
         }
     }
 
-    private function getResponseBody(ResponseInterface $response): string
+    private function getResponseBody(ResponseInterface $response)
     {
         $responseBody = '';
         $response->getBody()->rewind();
@@ -142,7 +138,7 @@ final class AndroidSafetyNetAttestationStatementSupport implements AttestationSt
         return $responseBody;
     }
 
-    private function isResponseSuccess(ResponseInterface $response): bool
+    private function isResponseSuccess(ResponseInterface $response)
     {
         if (200 !== $response->getStatusCode() || !$response->hasHeader('content-type')) {
             return false;

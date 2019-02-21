@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -50,14 +48,14 @@ class AuthenticatorData
      */
     private $extensions;
 
-    private const FLAG_UP = 0b00000001;
-    private const FLAG_RFU1 = 0b00000010;
-    private const FLAG_UV = 0b00000100;
-    private const FLAG_RFU2 = 0b00111000;
-    private const FLAG_AT = 0b01000000;
-    private const FLAG_ED = 0b10000000;
+    const FLAG_UP = 0b00000001;
+    const FLAG_RFU1 = 0b00000010;
+    const FLAG_UV = 0b00000100;
+    const FLAG_RFU2 = 0b00111000;
+    const FLAG_AT = 0b01000000;
+    const FLAG_ED = 0b10000000;
 
-    public function __construct(string $authData, string $rpIdHash, string $flags, int $signCount, ?AttestedCredentialData $attestedCredentialData, ?AuthenticationExtensionsClientOutputs $extensions)
+    public function __construct($authData, $rpIdHash, $flags, $signCount, $attestedCredentialData, $extensions)
     {
         $this->rpIdHash = $rpIdHash;
         $this->flags = $flags;
@@ -67,57 +65,57 @@ class AuthenticatorData
         $this->authData = $authData;
     }
 
-    public function getAuthData(): string
+    public function getAuthData()
     {
         return $this->authData;
     }
 
-    public function getRpIdHash(): string
+    public function getRpIdHash()
     {
         return $this->rpIdHash;
     }
 
-    public function isUserPresent(): bool
+    public function isUserPresent()
     {
         return 0 !== (\ord($this->flags) & self::FLAG_UP) ? true : false;
     }
 
-    public function isUserVerified(): bool
+    public function isUserVerified()
     {
         return 0 !== (\ord($this->flags) & self::FLAG_UV) ? true : false;
     }
 
-    public function hasAttestedCredentialData(): bool
+    public function hasAttestedCredentialData()
     {
         return 0 !== (\ord($this->flags) & self::FLAG_AT) ? true : false;
     }
 
-    public function hasExtensions(): bool
+    public function hasExtensions()
     {
         return 0 !== (\ord($this->flags) & self::FLAG_ED) ? true : false;
     }
 
-    public function getReservedForFutureUse1(): int
+    public function getReservedForFutureUse1()
     {
         return \ord($this->flags) & self::FLAG_RFU1;
     }
 
-    public function getReservedForFutureUse2(): int
+    public function getReservedForFutureUse2()
     {
         return \ord($this->flags) & self::FLAG_RFU2;
     }
 
-    public function getSignCount(): int
+    public function getSignCount()
     {
         return $this->signCount;
     }
 
-    public function getAttestedCredentialData(): ?AttestedCredentialData
+    public function getAttestedCredentialData()
     {
         return $this->attestedCredentialData;
     }
 
-    public function getExtensions(): ?AuthenticationExtensionsClientOutputs
+    public function getExtensions()
     {
         return null !== $this->extensions && $this->hasExtensions() ? $this->extensions : null;
     }

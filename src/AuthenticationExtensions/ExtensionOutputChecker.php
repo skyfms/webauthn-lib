@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -18,5 +16,5 @@ interface ExtensionOutputChecker
     /**
      * @throws ExtensionOutputError
      */
-    public function check(AuthenticationExtensionsClientOutputs $extensions): void;
+    public function check(AuthenticationExtensionsClientOutputs $extensions);
 }

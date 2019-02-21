@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -23,8 +21,8 @@ use Webauthn\AuthenticationExtensions\AuthenticationExtensionsClientOutputsLoade
 
 class PublicKeyCredentialLoader
 {
-    private const FLAG_AT = 0b01000000;
-    private const FLAG_ED = 0b10000000;
+    const FLAG_AT = 0b01000000;
+    const FLAG_ED = 0b10000000;
 
     /**
      * @var AttestationObjectLoader
@@ -62,7 +60,7 @@ class PublicKeyCredentialLoader
         return $publicKeyCredential;
     }
 
-    public function load(string $data): PublicKeyCredential
+    public function load($data): PublicKeyCredential
     {
         $json = \Safe\json_decode($data, true);
 

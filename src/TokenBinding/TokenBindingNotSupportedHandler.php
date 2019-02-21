@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -18,7 +16,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class TokenBindingNotSupportedHandler implements TokenBindingHandler
 {
-    public function check(TokenBinding $tokenBinding, ServerRequestInterface $request): void
+    public function check(TokenBinding $tokenBinding, ServerRequestInterface $request)
     {
         Assertion::true(TokenBinding::TOKEN_BINDING_STATUS_PRESENT !== $tokenBinding->getStatus(), 'Token binding not supported.');
     }

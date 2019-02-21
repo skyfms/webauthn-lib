@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -28,13 +26,13 @@ class AuthenticationExtension implements \JsonSerializable
     /**
      * @param mixed $value
      */
-    public function __construct(string $name, $value)
+    public function __construct($name, $value)
     {
         $this->name = $name;
         $this->value = $value;
     }
 
-    public function name(): string
+    public function name()
     {
         return $this->name;
     }

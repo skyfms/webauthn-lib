@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -28,7 +26,7 @@ class TokenBindingTest extends TestCase
     /**
      * @test
      */
-    public function aTokenBindingCanBeCreatedAndValueAccessed(): void
+    public function aTokenBindingCanBeCreatedAndValueAccessed()
     {
         $tokenBinding = new TokenBinding('status', 'id');
 
@@ -40,7 +38,7 @@ class TokenBindingTest extends TestCase
      * @test
      * @dataProvider dataCreationFromArray
      */
-    public function aTokenBindingCanBeCreatedFromJsonObject(array $data, ?array $exception, ?string $expectedStatus, ?string $expectedId): void
+    public function aTokenBindingCanBeCreatedFromJsonObject(array $data, $exception, $expectedStatus, $expectedId)
     {
         if (null !== $exception) {
             static::expectException($exception['class']);

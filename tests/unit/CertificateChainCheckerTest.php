@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -27,7 +25,7 @@ class CertificateChainCheckerTest extends TestCase
      *
      * @use \Webauthn\CertificateToolbox::checkChain
      */
-    public function anCertificateChainCheckerCanBeCreatedAndValueAccessed(): void
+    public function anCertificateChainCheckerCanBeCreatedAndValueAccessed()
     {
         $x5c = [
             \Safe\file_get_contents(__DIR__.'/../certificates/chain/1.der'),

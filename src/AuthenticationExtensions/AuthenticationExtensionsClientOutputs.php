@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -22,7 +20,7 @@ class AuthenticationExtensionsClientOutputs implements \JsonSerializable, \Count
      */
     private $extensions = [];
 
-    public function add(AuthenticationExtension $extension): void
+    public function add(AuthenticationExtension $extension)
     {
         $this->extensions[$extension->name()] = $extension;
     }
@@ -37,7 +35,7 @@ class AuthenticationExtensionsClientOutputs implements \JsonSerializable, \Count
         return $object;
     }
 
-    public function has(string $key): bool
+    public function has($key)
     {
         return \array_key_exists($key, $this->extensions);
     }
@@ -45,7 +43,7 @@ class AuthenticationExtensionsClientOutputs implements \JsonSerializable, \Count
     /**
      * @return mixed
      */
-    public function get(string $key)
+    public function get($key)
     {
         Assertion::true($this->has($key), \Safe\sprintf('The extension with key "%s" is not available', $key));
 
@@ -62,7 +60,7 @@ class AuthenticationExtensionsClientOutputs implements \JsonSerializable, \Count
         return new \ArrayIterator($this->extensions);
     }
 
-    public function count(int $mode = COUNT_NORMAL): int
+    public function count($mode = COUNT_NORMAL)
     {
         return \count($this->extensions, $mode);
     }

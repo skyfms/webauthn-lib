@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -29,7 +27,7 @@ class AttestationObjectTest extends TestCase
     /**
      * @test
      */
-    public function anAttestationObjectCanBeCreated(): void
+    public function anAttestationObjectCanBeCreated()
     {
         $attestationStatement = $this->prophesize(AttestationStatement::class);
         $authenticatorData = $this->prophesize(AuthenticatorData::class);

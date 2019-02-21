@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -29,7 +27,7 @@ class AuthenticationExtensionsClientTest extends TestCase
      *
      * @covers \Webauthn\AuthenticationExtensions\AuthenticationExtension
      */
-    public function anAuthenticationExtensionsClientCanBeCreatedAndValueAccessed(): void
+    public function anAuthenticationExtensionsClientCanBeCreatedAndValueAccessed()
     {
         $extension = new AuthenticationExtension('name', ['value']);
 
@@ -43,7 +41,7 @@ class AuthenticationExtensionsClientTest extends TestCase
      *
      * @covers \Webauthn\AuthenticationExtensions\AuthenticationExtensionsClientInputs
      */
-    public function theAuthenticationExtensionsClientInputsCanManageExtensions(): void
+    public function theAuthenticationExtensionsClientInputsCanManageExtensions()
     {
         $extension = new AuthenticationExtension('name', ['value']);
 
@@ -62,7 +60,7 @@ class AuthenticationExtensionsClientTest extends TestCase
      *
      * @covers \Webauthn\AuthenticationExtensions\AuthenticationExtensionsClientOutputs
      */
-    public function theAuthenticationExtensionsClientOutputsCanManageExtensions(): void
+    public function theAuthenticationExtensionsClientOutputsCanManageExtensions()
     {
         $extension = new AuthenticationExtension('name', ['value']);
 

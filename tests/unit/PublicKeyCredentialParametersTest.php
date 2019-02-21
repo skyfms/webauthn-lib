@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -27,7 +25,7 @@ class PublicKeyCredentialParametersTest extends TestCase
     /**
      * @test
      */
-    public function anPublicKeyCredentialParametersCanBeCreatedAndValueAccessed(): void
+    public function anPublicKeyCredentialParametersCanBeCreatedAndValueAccessed()
     {
         $parameters = new PublicKeyCredentialParameters('type', 100);
 

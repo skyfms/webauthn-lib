@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -28,18 +26,18 @@ abstract class Credential
      */
     private $type;
 
-    public function __construct(string $id, string $type)
+    public function __construct($id, $type)
     {
         $this->id = $id;
         $this->type = $type;
     }
 
-    public function getId(): string
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }

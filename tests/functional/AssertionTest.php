@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -33,7 +31,7 @@ class AssertionTest extends AbstractTestCase
     /**
      * @test
      */
-    public function anAssertionCanBeVerified(): void
+    public function anAssertionCanBeVerified()
     {
         $publicKeyCredentialRequestOptions = new PublicKeyCredentialRequestOptions(
             \Safe\base64_decode('G0JbLLndef3a0Iy3S2sSQA8uO4SO/ze6FZMAuPI6+xI=', true),
@@ -80,7 +78,7 @@ class AssertionTest extends AbstractTestCase
     /**
      * @test
      */
-    public function anAssertionWithTokenBindingCanBeVerified(): void
+    public function anAssertionWithTokenBindingCanBeVerified()
     {
         $publicKeyCredentialRequestOptions = new PublicKeyCredentialRequestOptions(
             \Safe\base64_decode('5rCH1TZzlhWn1ux5QyEFSZlmoYiKJm84FHxJZu1Zk4s=', true),
@@ -130,7 +128,7 @@ class AssertionTest extends AbstractTestCase
     /**
      * @test
      */
-    public function anAssertionWithUserHandleCanBeVerified(): void
+    public function anAssertionWithUserHandleCanBeVerified()
     {
         $publicKeyCredentialRequestOptions = new PublicKeyCredentialRequestOptions(
             \Safe\base64_decode('wKlW7S3EENHlcF2NgYhdUJfRJeCvAvlbk+Mllvxo0HA=', true),

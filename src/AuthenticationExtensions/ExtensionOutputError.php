@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -13,7 +11,7 @@ declare(strict_types=1);
 
 namespace Webauthn\AuthenticationExtensions;
 
-use Throwable;
+use Exception;
 
 class ExtensionOutputError extends \Exception
 {
@@ -22,7 +20,7 @@ class ExtensionOutputError extends \Exception
      */
     private $authenticationExtension;
 
-    public function __construct(AuthenticationExtension $authenticationExtension, string $message = '', int $code = 0, Throwable $previous = null)
+    public function __construct(AuthenticationExtension $authenticationExtension, $message = '', $code = 0, Exception $previous = null)
     {
         parent::__construct($message, $code, $previous);
         $this->authenticationExtension = $authenticationExtension;

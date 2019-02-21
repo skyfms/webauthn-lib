@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -28,14 +26,14 @@ class PublicKeyCredential extends Credential
      */
     private $response;
 
-    public function __construct(string $id, string $type, string $rawId, AuthenticatorResponse $response)
+    public function __construct($id, $type, $rawId, AuthenticatorResponse $response)
     {
         parent::__construct($id, $type);
         $this->rawId = $rawId;
         $this->response = $response;
     }
 
-    public function getRawId(): string
+    public function getRawId()
     {
         return $this->rawId;
     }

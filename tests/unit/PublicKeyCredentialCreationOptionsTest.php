@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -33,7 +31,7 @@ class PublicKeyCredentialCreationOptionsTest extends TestCase
     /**
      * @test
      */
-    public function anPublicKeyCredentialCreationOptionsCanBeCreatedAndValueAccessed(): void
+    public function anPublicKeyCredentialCreationOptionsCanBeCreatedAndValueAccessed()
     {
         $rp = $this->prophesize(PublicKeyCredentialRpEntity::class);
         $rp->jsonSerialize()->willReturn(['name' => 'RP']);
@@ -83,7 +81,7 @@ class PublicKeyCredentialCreationOptionsTest extends TestCase
     /**
      * @test
      */
-    public function anPublicKeyCredentialCreationOptionsWithoutExcludeCredentialsCanBeSerializedAndDeserialized(): void
+    public function anPublicKeyCredentialCreationOptionsWithoutExcludeCredentialsCanBeSerializedAndDeserialized()
     {
         $rp = $this->prophesize(PublicKeyCredentialRpEntity::class);
         $rp->jsonSerialize()->willReturn(['name' => 'RP']);

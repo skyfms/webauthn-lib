@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -72,7 +70,7 @@ abstract class AbstractTestCase extends TestCase
      */
     private $authenticatorAttestationResponseValidator;
 
-    protected function getAuthenticatorAttestationResponseValidator(CredentialRepository $credentialRepository, ?HttpClient $client = null): AuthenticatorAttestationResponseValidator
+    protected function getAuthenticatorAttestationResponseValidator(CredentialRepository $credentialRepository, $client = null): AuthenticatorAttestationResponseValidator
     {
         if (!$this->authenticatorAttestationResponseValidator) {
             $this->authenticatorAttestationResponseValidator = new AuthenticatorAttestationResponseValidator(
@@ -122,7 +120,7 @@ abstract class AbstractTestCase extends TestCase
         return $this->decoder;
     }
 
-    private function getAttestationStatementSupportManager(?HttpClient $client = null): AttestationStatementSupportManager
+    private function getAttestationStatementSupportManager($client = null): AttestationStatementSupportManager
     {
         $attestationStatementSupportManager = new AttestationStatementSupportManager();
         $attestationStatementSupportManager->add(new NoneAttestationStatementSupport());

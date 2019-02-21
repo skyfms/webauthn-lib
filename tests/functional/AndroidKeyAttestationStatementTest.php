@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -38,7 +36,7 @@ class AndroidKeyAttestationStatementTest extends AbstractTestCase
     /**
      * @test
      */
-    public function anAndroidSafetyNetAttestationCanBeVerified(): void
+    public function anAndroidSafetyNetAttestationCanBeVerified()
     {
         $publicKeyCredentialCreationOptions = new PublicKeyCredentialCreationOptions(
             new PublicKeyCredentialRpEntity('My Application'),

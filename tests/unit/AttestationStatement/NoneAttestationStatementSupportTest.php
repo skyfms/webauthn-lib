@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -29,7 +27,7 @@ class NoneAttestationStatementSupportTest extends TestCase
     /**
      * @test
      */
-    public function theAttestationStatementIsNotValid(): void
+    public function theAttestationStatementIsNotValid()
     {
         $support = new NoneAttestationStatementSupport();
 
@@ -44,7 +42,7 @@ class NoneAttestationStatementSupportTest extends TestCase
     /**
      * @test
      */
-    public function theAttestationStatementIsValid(): void
+    public function theAttestationStatementIsValid()
     {
         $support = new NoneAttestationStatementSupport();
 

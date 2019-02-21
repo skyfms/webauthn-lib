@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -40,7 +38,7 @@ final class AndroidKeyAttestationStatementSupport implements AttestationStatemen
         $this->decoder = $decoder;
     }
 
-    public function name(): string
+    public function name()
     {
         return 'android-key';
     }
@@ -62,7 +60,7 @@ final class AndroidKeyAttestationStatementSupport implements AttestationStatemen
         return AttestationStatement::createBasic($attestation['fmt'], $attestation['attStmt'], new CertificateTrustPath($certificates));
     }
 
-    public function isValid(string $clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData): bool
+    public function isValid($clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData)
     {
         $trustPath = $attestationStatement->getTrustPath();
         Assertion::isInstanceOf($trustPath, CertificateTrustPath::class, 'Invalid trust path');
@@ -77,7 +75,7 @@ final class AndroidKeyAttestationStatementSupport implements AttestationStatemen
         return 1 === openssl_verify($signedData, $attestationStatement->get('sig'), $leaf, Algorithms::getOpensslAlgorithmFor((int) $alg));
     }
 
-    private function checkCertificateAndGetPublicKey(string $certificate, string $clientDataHash, AuthenticatorData $authenticatorData): void
+    private function checkCertificateAndGetPublicKey($certificate, $clientDataHash, AuthenticatorData $authenticatorData)
     {
         try {
             $resource = \Safe\openssl_pkey_get_public($certificate);
@@ -121,12 +119,12 @@ final class AndroidKeyAttestationStatementSupport implements AttestationStatemen
             $teeEnforcedFlags = $objects[6];
             Assertion::isInstanceOf($teeEnforcedFlags, Sequence::class, 'The certificate extension "1.3.6.1.4.1.11129.2.1.17" is invalid');
             $this->checkAbsenceOfAllApplicationsTag($teeEnforcedFlags);
-        } catch (\Throwable $throwable) {
+        } catch (\Exception $throwable) {
             throw new \InvalidArgumentException('The certificate in the attestation statement is not valid.', 0, $throwable);
         }
     }
 
-    private function checkAbsenceOfAllApplicationsTag(Sequence $sequence): void
+    private function checkAbsenceOfAllApplicationsTag(Sequence $sequence)
     {
         foreach ($sequence->getChildren() as $tag) {
             Assertion::isInstanceOf($tag, ExplicitlyTaggedObject::class, 'Invalid tag');

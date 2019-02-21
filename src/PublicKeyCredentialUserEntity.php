@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -27,19 +25,19 @@ class PublicKeyCredentialUserEntity extends PublicKeyCredentialEntity
      */
     private $displayName;
 
-    public function __construct(string $name, string $id, string $displayName, ?string $icon = null)
+    public function __construct($name, $id, $displayName, $icon = null)
     {
         parent::__construct($name, $icon);
         $this->id = $id;
         $this->displayName = $displayName;
     }
 
-    public function getId(): string
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getDisplayName(): string
+    public function getDisplayName()
     {
         return $this->displayName;
     }

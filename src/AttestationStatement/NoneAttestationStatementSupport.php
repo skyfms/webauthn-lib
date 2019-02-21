@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -19,7 +17,7 @@ use Webauthn\TrustPath\EmptyTrustPath;
 
 final class NoneAttestationStatementSupport implements AttestationStatementSupport
 {
-    public function name(): string
+    public function name()
     {
         return 'none';
     }
@@ -31,7 +29,7 @@ final class NoneAttestationStatementSupport implements AttestationStatementSuppo
         return AttestationStatement::createNone($attestation['fmt'], $attestation['attStmt'], new EmptyTrustPath());
     }
 
-    public function isValid(string $clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData): bool
+    public function isValid($clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData)
     {
         return 0 === \count($attestationStatement->getAttStmt());
     }

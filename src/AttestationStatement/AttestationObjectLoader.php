@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -24,8 +22,8 @@ use Webauthn\AuthenticatorData;
 
 class AttestationObjectLoader
 {
-    private const FLAG_AT = 0b01000000;
-    private const FLAG_ED = 0b10000000;
+    const FLAG_AT = 0b01000000;
+    const FLAG_ED = 0b10000000;
 
     /**
      * @var Decoder
@@ -43,7 +41,7 @@ class AttestationObjectLoader
         $this->attestationStatementSupportManager = $attestationStatementSupportManager;
     }
 
-    public function load(string $data): AttestationObject
+    public function load($data): AttestationObject
     {
         $decodedData = Base64Url::decode($data);
         $stream = new StringStream($decodedData);

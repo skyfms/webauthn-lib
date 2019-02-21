@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -49,7 +47,7 @@ class CollectedClientData
      */
     private $tokenBinding;
 
-    public function __construct(string $rawData, array $data)
+    public function __construct($rawData, array $data)
     {
         $this->type = $this->findData($data, 'type');
         $this->challenge = $this->findData($data, 'challenge', true, true);
@@ -59,7 +57,7 @@ class CollectedClientData
         $this->data = $data;
     }
 
-    public static function createFormJson(string $data): self
+    public static function createFormJson($data): self
     {
         $rawData = Base64Url::decode($data);
         $json = \Safe\json_decode($rawData, true);
@@ -68,27 +66,27 @@ class CollectedClientData
         return new self($rawData, $json);
     }
 
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }
 
-    public function getChallenge(): string
+    public function getChallenge()
     {
         return $this->challenge;
     }
 
-    public function getOrigin(): string
+    public function getOrigin()
     {
         return $this->origin;
     }
 
-    public function getTokenBinding(): ?TokenBinding
+    public function getTokenBinding()
     {
         return null === $this->tokenBinding ? null : TokenBinding::createFormArray($this->tokenBinding);
     }
 
-    public function getRawData(): string
+    public function getRawData()
     {
         return $this->rawData;
     }
@@ -101,7 +99,7 @@ class CollectedClientData
         return array_keys($this->data);
     }
 
-    public function has(string $key): bool
+    public function has($key)
     {
         return \array_key_exists($key, $this->data);
     }
@@ -109,7 +107,7 @@ class CollectedClientData
     /**
      * @return mixed
      */
-    public function get(string $key)
+    public function get($key)
     {
         if (!$this->has($key)) {
             throw new \InvalidArgumentException(\Safe\sprintf('The key "%s" is missing', $key));
@@ -121,7 +119,7 @@ class CollectedClientData
     /**
      * @return mixed
      */
-    private function findData(array $json, string $key, bool $isRequired = true, bool $isB64 = false)
+    private function findData(array $json, $key, $isRequired = true, $isB64 = false)
     {
         if (!\array_key_exists($key, $json)) {
             if ($isRequired) {

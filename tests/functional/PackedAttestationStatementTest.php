@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -38,7 +36,7 @@ class PackedAttestationStatementTest extends AbstractTestCase
     /**
      * @test
      */
-    public function aPackedAttestationCanBeVerified(): void
+    public function aPackedAttestationCanBeVerified()
     {
         $publicKeyCredentialCreationOptions = new PublicKeyCredentialCreationOptions(
             new PublicKeyCredentialRpEntity('My Application'),
@@ -102,7 +100,7 @@ class PackedAttestationStatementTest extends AbstractTestCase
     /**
      * @test
      */
-    public function aPackedAttestationWithSelfStatementCanBeVerified(): void
+    public function aPackedAttestationWithSelfStatementCanBeVerified()
     {
         $publicKeyCredentialCreationOptions = new PublicKeyCredentialCreationOptions(
             new PublicKeyCredentialRpEntity('My Application'),

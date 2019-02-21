@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -33,7 +31,7 @@ class AuthenticatorAssertionResponse extends AuthenticatorResponse
      */
     private $userHandle;
 
-    public function __construct(CollectedClientData $clientDataJSON, AuthenticatorData $authenticatorData, string $signature, ?string $userHandle)
+    public function __construct(CollectedClientData $clientDataJSON, AuthenticatorData $authenticatorData, $signature, $userHandle)
     {
         parent::__construct($clientDataJSON);
         $this->authenticatorData = $authenticatorData;
@@ -46,12 +44,12 @@ class AuthenticatorAssertionResponse extends AuthenticatorResponse
         return $this->authenticatorData;
     }
 
-    public function getSignature(): string
+    public function getSignature()
     {
         return $this->signature;
     }
 
-    public function getUserHandle(): ?string
+    public function getUserHandle()
     {
         if (null === $this->userHandle || '' === $this->userHandle) {
             return $this->userHandle;

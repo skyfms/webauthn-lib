@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -52,7 +50,7 @@ class AuthenticatorAttestationResponseValidator
     /**
      * @see https://www.w3.org/TR/webauthn/#registering-a-new-credential
      */
-    public function check(AuthenticatorAttestationResponse $authenticatorAttestationResponse, PublicKeyCredentialCreationOptions $publicKeyCredentialCreationOptions, ServerRequestInterface $request): void
+    public function check(AuthenticatorAttestationResponse $authenticatorAttestationResponse, PublicKeyCredentialCreationOptions $publicKeyCredentialCreationOptions, ServerRequestInterface $request)
     {
         /** @see 7.1.1 */
         //Nothing to do
@@ -127,7 +125,7 @@ class AuthenticatorAttestationResponseValidator
         /* @see 7.1.19 */
     }
 
-    private function has(string $credentialId): bool
+    private function has($credentialId)
     {
         if ($this->credentialRepository instanceof PublicKeyCredentialSourceRepository) {
             return null !== $this->credentialRepository->findOneByCredentialId($credentialId);

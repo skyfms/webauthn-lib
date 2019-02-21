@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -27,7 +25,7 @@ class AuthenticatorSelectionCriteriaTest extends TestCase
     /**
      * @test
      */
-    public function anAuthenticatorSelectionCriteriaCanBeCreatedAndValueAccessed(): void
+    public function anAuthenticatorSelectionCriteriaCanBeCreatedAndValueAccessed()
     {
         $authenticatorSelectionCriteria = new AuthenticatorSelectionCriteria('authenticator_attachment', true, 'user_verification');
 

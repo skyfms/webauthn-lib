@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -18,9 +16,9 @@ use Webauthn\AuthenticationExtensions\AuthenticationExtensionsClientInputs;
 
 class PublicKeyCredentialCreationOptions implements \JsonSerializable
 {
-    public const ATTESTATION_CONVEYANCE_PREFERENCE_NONE = 'none';
-    public const ATTESTATION_CONVEYANCE_PREFERENCE_INDIRECT = 'indirect';
-    public const ATTESTATION_CONVEYANCE_PREFERENCE_DIRECT = 'direct';
+    const ATTESTATION_CONVEYANCE_PREFERENCE_NONE = 'none';
+    const ATTESTATION_CONVEYANCE_PREFERENCE_INDIRECT = 'indirect';
+    const ATTESTATION_CONVEYANCE_PREFERENCE_DIRECT = 'direct';
 
     /**
      * @var PublicKeyCredentialRpEntity
@@ -73,7 +71,7 @@ class PublicKeyCredentialCreationOptions implements \JsonSerializable
      * @param PublicKeyCredentialParameters[] $pubKeyCredParams
      * @param PublicKeyCredentialDescriptor[] $excludeCredentials
      */
-    public function __construct(PublicKeyCredentialRpEntity $rp, PublicKeyCredentialUserEntity $user, string $challenge, array $pubKeyCredParams, ?int $timeout, array $excludeCredentials, AuthenticatorSelectionCriteria $authenticatorSelection, string $attestation, ?AuthenticationExtensionsClientInputs $extensions)
+    public function __construct(PublicKeyCredentialRpEntity $rp, PublicKeyCredentialUserEntity $user, $challenge, array $pubKeyCredParams, $timeout, array $excludeCredentials, AuthenticatorSelectionCriteria $authenticatorSelection, $attestation, $extensions)
     {
         $this->rp = $rp;
         $this->user = $user;
@@ -96,7 +94,7 @@ class PublicKeyCredentialCreationOptions implements \JsonSerializable
         return $this->user;
     }
 
-    public function getChallenge(): string
+    public function getChallenge()
     {
         return $this->challenge;
     }
@@ -109,7 +107,7 @@ class PublicKeyCredentialCreationOptions implements \JsonSerializable
         return $this->pubKeyCredParams;
     }
 
-    public function getTimeout(): ?int
+    public function getTimeout()
     {
         return $this->timeout;
     }
@@ -127,7 +125,7 @@ class PublicKeyCredentialCreationOptions implements \JsonSerializable
         return $this->authenticatorSelection;
     }
 
-    public function getAttestation(): string
+    public function getAttestation()
     {
         return $this->attestation;
     }

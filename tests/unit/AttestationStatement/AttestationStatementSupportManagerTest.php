@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -29,7 +27,7 @@ class AttestationStatementSupportManagerTest extends TestCase
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The attestation statement format "bar" is not supported.
      */
-    public function theAttestationFormatIsNotSupported(): void
+    public function theAttestationFormatIsNotSupported()
     {
         $manager = new AttestationStatementSupportManager();
         $manager->get('bar');

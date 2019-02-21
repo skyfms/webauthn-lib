@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -18,13 +16,13 @@ namespace Webauthn;
  */
 interface CredentialRepository
 {
-    public function has(string $credentialId): bool;
+    public function has($credentialId);
 
-    public function get(string $credentialId): AttestedCredentialData;
+    public function get($credentialId): AttestedCredentialData;
 
-    public function getUserHandleFor(string $credentialId): string;
+    public function getUserHandleFor($credentialId);
 
-    public function getCounterFor(string $credentialId): int;
+    public function getCounterFor($credentialId);
 
-    public function updateCounterFor(string $credentialId, int $newCounter): void;
+    public function updateCounterFor($credentialId, $newCounter);
 }

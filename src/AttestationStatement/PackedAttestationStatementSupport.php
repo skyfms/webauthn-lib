@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -45,7 +43,7 @@ final class PackedAttestationStatementSupport implements AttestationStatementSup
         $this->algorithmManager = $algorithmManager;
     }
 
-    public function name(): string
+    public function name()
     {
         return 'packed';
     }
@@ -65,7 +63,7 @@ final class PackedAttestationStatementSupport implements AttestationStatementSup
         }
     }
 
-    public function isValid(string $clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData): bool
+    public function isValid($clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData)
     {
         $trustPath = $attestationStatement->getTrustPath();
         switch (true) {
@@ -105,7 +103,7 @@ final class PackedAttestationStatementSupport implements AttestationStatementSup
         return AttestationStatement::createSelf($attestation['fmt'], $attestation['attStmt'], new EmptyTrustPath());
     }
 
-    private function checkCertificate(string $attestnCert, AuthenticatorData $authenticatorData): void
+    private function checkCertificate($attestnCert, AuthenticatorData $authenticatorData)
     {
         $parsed = openssl_x509_parse($attestnCert);
         Assertion::isArray($parsed, 'Invalid certificate');
@@ -129,7 +127,7 @@ final class PackedAttestationStatementSupport implements AttestationStatementSup
         Assertion::false(\in_array('1.3.6.1.4.1.45724.1.1.4', $parsed['extensions'], true) && !hash_equals($attestedCredentialData->getAaguid(), $parsed['extensions']['1.3.6.1.4.1.45724.1.1.4']), 'The value of the "aaguid" does not match with the certificate');
     }
 
-    private function processWithCertificate(string $clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData, CertificateTrustPath $trustPath): bool
+    private function processWithCertificate($clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData, CertificateTrustPath $trustPath)
     {
         $certificates = $trustPath->getCertificates();
         Assertion::notEmpty($certificates, 'The attestation statement value "x5c" must be a list with at least one certificate.');
@@ -148,12 +146,12 @@ final class PackedAttestationStatementSupport implements AttestationStatementSup
         return 1 === $result;
     }
 
-    private function processWithECDAA(): bool
+    private function processWithECDAA($clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData)
     {
         throw new \RuntimeException('ECDAA not supported');
     }
 
-    private function processWithSelfAttestation(string $clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData): bool
+    private function processWithSelfAttestation($clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData)
     {
         $attestedCredentialData = $authenticatorData->getAttestedCredentialData();
         Assertion::notNull($attestedCredentialData, 'No attested credential available');

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -23,7 +21,7 @@ use Webauthn\TrustPath\EcdaaKeyIdTrustPath;
 
 final class TPMAttestationStatementSupport implements AttestationStatementSupport
 {
-    public function name(): string
+    public function name()
     {
         return 'tpm';
     }
@@ -57,7 +55,7 @@ final class TPMAttestationStatementSupport implements AttestationStatementSuppor
         );
     }
 
-    public function isValid(string $clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData): bool
+    public function isValid($clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData)
     {
         $attToBeSigned = $authenticatorData->getAuthData().$clientDataJSONHash;
         $attToBeSignedHash = hash(Algorithms::getHashAlgorithmFor((int) $attestationStatement->get('alg')), $attToBeSigned, true);
@@ -73,7 +71,7 @@ final class TPMAttestationStatementSupport implements AttestationStatementSuppor
         }
     }
 
-    private function checkCertInfo(string $data): array
+    private function checkCertInfo($data): array
     {
         $certInfo = new StringStream($data);
 
@@ -110,7 +108,7 @@ final class TPMAttestationStatementSupport implements AttestationStatementSuppor
         ];
     }
 
-    private function checkPubArea(string $data): array
+    private function checkPubArea($data): array
     {
         $pubArea = new StringStream($data);
 
@@ -138,7 +136,7 @@ final class TPMAttestationStatementSupport implements AttestationStatementSuppor
         ];
     }
 
-    private function getParameters(string $type, StringStream $stream): array
+    private function getParameters($type, StringStream $stream): array
     {
         switch (bin2hex($type)) {
             case '0001':
@@ -162,7 +160,7 @@ final class TPMAttestationStatementSupport implements AttestationStatementSuppor
         }
     }
 
-    private function getExponent(string $exponent): string
+    private function getExponent($exponent)
     {
         return '00000000' === bin2hex($exponent) ? Base64Url::decode('AQAB') : $exponent;
     }
@@ -179,7 +177,7 @@ final class TPMAttestationStatementSupport implements AttestationStatementSuppor
         return $certificates;
     }
 
-    private function getTPMHash(string $nameAlg): string
+    private function getTPMHash($nameAlg)
     {
         switch (bin2hex($nameAlg)) {
             case '0004':
@@ -195,7 +193,7 @@ final class TPMAttestationStatementSupport implements AttestationStatementSuppor
         }
     }
 
-    private function processWithCertificate(string $clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData): bool
+    private function processWithCertificate($clientDataJSONHash, AttestationStatement $attestationStatement, AuthenticatorData $authenticatorData)
     {
         $trustPath = $attestationStatement->getTrustPath();
         Assertion::isInstanceOf($trustPath, CertificateTrustPath::class, 'Invalid trust path');
@@ -215,7 +213,7 @@ final class TPMAttestationStatementSupport implements AttestationStatementSuppor
         return 1 === $result;
     }
 
-    private function checkCertificate(string $attestnCert, AuthenticatorData $authenticatorData): void
+    private function checkCertificate($attestnCert, AuthenticatorData $authenticatorData)
     {
         $parsed = openssl_x509_parse($attestnCert);
         Assertion::isArray($parsed, 'Invalid certificate');
@@ -253,7 +251,7 @@ final class TPMAttestationStatementSupport implements AttestationStatementSuppor
         // TODO: For attestationRoot in metadata.attestationRootCertificates, generate verification chain verifX5C by appending attestationRoot to the x5c. Try verifying verifX5C. If successful go to next step. If fail try next attestationRoot. If no attestationRoots left to try, fail.
     }
 
-    private function processWithECDAA(): bool
+    private function processWithECDAA()
     {
         throw new \RuntimeException('ECDAA not supported');
     }

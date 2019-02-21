@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -17,12 +15,12 @@ use Assert\Assertion;
 
 class PublicKeyCredentialDescriptor implements \JsonSerializable
 {
-    public const CREDENTIAL_TYPE_PUBLIC_KEY = 'public-key';
+    const CREDENTIAL_TYPE_PUBLIC_KEY = 'public-key';
 
-    public const AUTHENTICATOR_TRANSPORT_USB = 'usb';
-    public const AUTHENTICATOR_TRANSPORT_NFC = 'nfc';
-    public const AUTHENTICATOR_TRANSPORT_BLE = 'ble';
-    public const AUTHENTICATOR_TRANSPORT_INTERNAL = 'internal';
+    const AUTHENTICATOR_TRANSPORT_USB = 'usb';
+    const AUTHENTICATOR_TRANSPORT_NFC = 'nfc';
+    const AUTHENTICATOR_TRANSPORT_BLE = 'ble';
+    const AUTHENTICATOR_TRANSPORT_INTERNAL = 'internal';
 
     /**
      * @var string
@@ -42,19 +40,19 @@ class PublicKeyCredentialDescriptor implements \JsonSerializable
     /**
      * @param string[] $transports
      */
-    public function __construct(string $type, string $id, array $transports = [])
+    public function __construct($type, $id, array $transports = [])
     {
         $this->type = $type;
         $this->id = $id;
         $this->transports = $transports;
     }
 
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }
 
-    public function getId(): string
+    public function getId()
     {
         return $this->id;
     }

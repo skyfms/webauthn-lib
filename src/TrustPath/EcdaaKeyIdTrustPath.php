@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -20,12 +18,12 @@ class EcdaaKeyIdTrustPath extends AbstractTrustPath
      */
     private $ecdaaKeyId;
 
-    public function __construct(string $ecdaaKeyId)
+    public function __construct($ecdaaKeyId)
     {
         $this->ecdaaKeyId = $ecdaaKeyId;
     }
 
-    public function getEcdaaKeyId(): string
+    public function getEcdaaKeyId()
     {
         return $this->ecdaaKeyId;
     }

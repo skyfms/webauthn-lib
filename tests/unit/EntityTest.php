@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -29,7 +27,7 @@ class EntityTest extends TestCase
      * @covers \Webauthn\PublicKeyCredentialEntity
      * @covers \Webauthn\PublicKeyCredentialUserEntity
      */
-    public function anPublicKeyCredentialUserEntityCanBeCreatedAndValueAccessed(): void
+    public function anPublicKeyCredentialUserEntityCanBeCreatedAndValueAccessed()
     {
         $user = new PublicKeyCredentialUserEntity('name', 'id', 'display_name', 'icon');
 
@@ -46,7 +44,7 @@ class EntityTest extends TestCase
      * @covers \Webauthn\PublicKeyCredentialEntity
      * @covers \Webauthn\PublicKeyCredentialRpEntity
      */
-    public function anPublicKeyCredentialRpEntityCanBeCreatedAndValueAccessed(): void
+    public function anPublicKeyCredentialRpEntityCanBeCreatedAndValueAccessed()
     {
         $rp = new PublicKeyCredentialRpEntity('name', 'id', 'icon');
 

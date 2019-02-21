@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -22,17 +20,17 @@ class AttestationStatementSupportManager
      */
     private $attestationStatementSupports = [];
 
-    public function add(AttestationStatementSupport $attestationStatementSupport): void
+    public function add(AttestationStatementSupport $attestationStatementSupport)
     {
         $this->attestationStatementSupports[$attestationStatementSupport->name()] = $attestationStatementSupport;
     }
 
-    public function has(string $name): bool
+    public function has($name)
     {
         return \array_key_exists($name, $this->attestationStatementSupports);
     }
 
-    public function get(string $name): AttestationStatementSupport
+    public function get($name): AttestationStatementSupport
     {
         Assertion::true($this->has($name), \Safe\sprintf('The attestation statement format "%s" is not supported.', $name));
 

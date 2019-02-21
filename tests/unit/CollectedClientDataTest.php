@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -29,7 +27,7 @@ class CollectedClientDataTest extends TestCase
     /**
      * @test
      */
-    public function anCollectedClientDataCanBeCreatedAndValueAccessed(): void
+    public function anCollectedClientDataCanBeCreatedAndValueAccessed()
     {
         $collectedClientData = new CollectedClientData(
             'raw_data',

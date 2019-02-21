@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * The MIT License (MIT)
  *
@@ -42,7 +40,7 @@ class FidoU2FAttestationStatementSupportTest extends TestCase
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The attestation statement value "sig" is missing.
      */
-    public function theAttestationStatementDoesNotContainTheRequiredSignature(): void
+    public function theAttestationStatementDoesNotContainTheRequiredSignature()
     {
         $support = new FidoU2FAttestationStatementSupport($this->getDecoder());
 
@@ -58,7 +56,7 @@ class FidoU2FAttestationStatementSupportTest extends TestCase
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The attestation statement value "x5c" is missing.
      */
-    public function theAttestationStatementDoesNotContainTheRequiredCertificateList(): void
+    public function theAttestationStatementDoesNotContainTheRequiredCertificateList()
     {
         $support = new FidoU2FAttestationStatementSupport($this->getDecoder());
         static::assertFalse($support->load([
@@ -74,7 +72,7 @@ class FidoU2FAttestationStatementSupportTest extends TestCase
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The attestation statement value "x5c" must be a list with one certificate.
      */
-    public function theAttestationStatementContainsAnEmptyCertificateList(): void
+    public function theAttestationStatementContainsAnEmptyCertificateList()
     {
         $support = new FidoU2FAttestationStatementSupport($this->getDecoder());
 
@@ -93,7 +91,7 @@ class FidoU2FAttestationStatementSupportTest extends TestCase
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The certificate in the attestation statement is not valid.
      */
-    public function theAttestationStatementDoesNotContainAValidCertificateList(): void
+    public function theAttestationStatementDoesNotContainAValidCertificateList()
     {
         $support = new FidoU2FAttestationStatementSupport($this->getDecoder());
 
@@ -110,7 +108,7 @@ class FidoU2FAttestationStatementSupportTest extends TestCase
     /**
      * @test
      */
-    public function theAttestationStatementContain(): void
+    public function theAttestationStatementContain()
     {
         $support = new FidoU2FAttestationStatementSupport($this->getDecoder());
 
